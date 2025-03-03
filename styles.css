@@ -555,3 +555,13 @@ input:valid, textarea:valid {
 .char-error {
     color: red;
 }
+
+@keyframes flash {
+    0% { border-color: red; background-color: #FFEEEE; }
+    50% { border-color: red; background-color: #FFCCCC; }
+    100% { border-color: red; background-color: #FFEEEE; }
+}
+
+.flash-error {
+    animation: flash 0.5s ease-in-out;
+}

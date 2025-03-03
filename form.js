@@ -17,21 +17,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function flashError(input, message) {
-        console.log(`Error logged for field: ${input.name} - ${message}`); // Debugging line
-
+        console.log(`Error logged for field: ${input.name} - ${message}`);
+    
         formErrors.push({
             field: input.name,
             error: message,
             timestamp: new Date().toISOString()
         });
-
+    
+        input.classList.add('flash-error');
+    
+        setTimeout(() => {
+            input.classList.remove('flash-error');
+        }, 500); // Match the duration of the CSS animation
+    
         errorMessage.textContent = message;
         errorMessage.style.opacity = 1;
         errorMessage.classList.remove('error-fade');
         setTimeout(() => {
             errorMessage.classList.add('error-fade');
         }, 2000);
-
+    
         setTimeout(() => {
             errorMessage.style.opacity = 0;
             setTimeout(() => {
@@ -40,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 3000);
     }
 
-    // Event listeners for input masking
     nameInput.addEventListener('keypress', (event) => {
         maskInput(event, /^[A-Za-z\s]+$/);
     });
@@ -71,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', (event) => {
         let isValid = true;
-
+    
         if (!nameInput.checkValidity()) {
             if (nameInput.validity.valueMissing) {
                 flashError(nameInput, "Name is required.");
@@ -82,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             isValid = false;
         }
-
+    
         if (!emailInput.checkValidity()) {
             if (emailInput.validity.valueMissing) {
                 flashError(emailInput, "Email is required.");
@@ -91,12 +96,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             isValid = false;
         }
-
+    
         if (commentsInput.value.length > 300) {
             flashError(commentsInput, "Comments must be 300 characters or less.");
             isValid = false;
         }
-
+    
         if (!isValid) {
             event.preventDefault();
         } else {
