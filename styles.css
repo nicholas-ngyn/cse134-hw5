@@ -1,11 +1,15 @@
 :root {
     --primary-color: #0073e6;
     --secondary-color: #2c2c2c;
-    --text-color: #f0f0f0;
-    --background-color: #121212;
     --accent-color: #ffcc00;
     --border-radius: 8px;
     --transition-speed: 0.3s;
+    --background-color-dark: #121212;
+    --text-color-dark: #ffffff;
+    --button-bg-dark: #333333;
+    --background-color-light: #ffffff;
+    --text-color-light: #000000;
+    --button-bg-light: #f1f1f1;
 }
 
 @font-face {
@@ -21,8 +25,8 @@
 }
 
 body {
-    background-color: var(--background-color, #121212);
-    color: var(--text-color, #f0f0f0);
+    background-color: var(--background-color-dark, #121212);
+    color: var(--text-color-dark, #f0f0f0);
     line-height: 1.6;
 }
 
@@ -46,6 +50,12 @@ header {
 header:hover {
     opacity: 1;
     transform: scale(1.02);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav ul {
@@ -74,6 +84,35 @@ nav a:hover {
 
 nav a i {
     font-size: 1.5em;
+}
+
+.light-mode {
+    --background-color-dark: var(--background-color-light);
+    --text-color-dark: var(--text-color-light);
+    --button-bg-dark: var(--background-color-light);
+}
+
+.theme-toggle-container {
+    position: fixed;
+    right: 40px;
+}
+
+#theme-toggle {
+    background-color: var(--button-bg-dark);
+    border: var(--primary-color) solid 2px;
+    border-radius: 50%;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color var(--transition-speed);
+}
+
+.light-mode #theme-toggle {
+    background-color: var(--button-bg-dark);
+}
+
+.hidden {
+    display: none;
 }
 
 #intro {
@@ -224,7 +263,7 @@ iframe {
 
 #projects {
     padding: 40px;
-    background-color: var(--background-color, #121212);
+    background-color: var(--background-color-dark, #121212);
     margin: 30px 0px;
 }
 
@@ -302,7 +341,7 @@ figcaption .description {
 
 footer {
     text-align: center;
-    background-color: var(--background-color, #121212);
+    background-color: var(--background-color-dark, #121212);
     margin-top: 30px;
 }
 
@@ -313,7 +352,7 @@ footer h1 {
 
 footer p {
     font-size: 1.2rem;
-    color: var(--text-color, #f0f0f0);
+    color: var(--text-color-dark, #f0f0f0);
     margin-bottom: 20px;
 }
 
@@ -433,4 +472,86 @@ li:has(a) {
     .project-card {
         padding: 0.8rem;
     }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 100px 0px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.required-indicator {
+    color: red;
+    font-weight: bold;
+    vertical-align: super; /* Moves it higher */
+
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input:invalid, textarea:invalid {
+    border-color: red;
+    background-color: #FFEEEE;
+}
+
+input:valid, textarea:valid {
+    border-color: green;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.error-fade {
+    opacity: 0;
+}
+
+.char-count {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.char-warning {
+    color: orange;
+}
+
+.char-error {
+    color: red;
 }

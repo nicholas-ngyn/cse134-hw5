@@ -24,6 +24,11 @@
                     <i class="fab fa-github"></i> GitHub
                 </a></li>
             </ul>
+            <div class="theme-toggle-container">
+                <button id="theme-toggle" aria-label="Toggle theme" class="hidden">
+                    🌙
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -31,7 +36,7 @@
     <main>
         <section id="intro">
             <hgroup>
-                <h1 id="name">Nicholas Nguyen</h1>
+                <h1">Nicholas Nguyen</h1>
                 <p id="bio">CS @ UCSD | 3rd Year Undergrad</p>
             </hgroup>
         </section>
@@ -125,22 +130,27 @@
         </section>
         <hr>
         <section>
-            <h2>Contact Us</h2>
-            <form action="https://httpbin.org/post" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
+            <form id="contact-form" action="https://httpbin.org/post" method="post">
+                <label for="name">Name: <span class="required-indicator">*</span></label>
+                <input type="text" id="name" name="name" required minlength="1" maxlength="50">
+        
+                <label for="email">Email: <span class="required-indicator">*</span></label>
                 <input type="email" id="email" name="email" required>
-                
-                <label for="comments">Comments:</label>
-                <textarea id="comments" name="comments" rows="4" required></textarea>
-                
+        
+                <label for="comments">Comments <i>(optional)</i>:</label>
+                <textarea id="comments" name="comments" rows="4" maxlength="300" 
+                    pattern="[A-Za-z0-9\s.,!?'-]+"></textarea>
+                <output id="info-message" class="output">300 characters remaining</output>
+        
                 <input type="hidden" name="possible_bot" value="true">
-                
+                <input type="hidden" name="form-errors" id="form-errors" value="[]">
+        
                 <button type="submit">Submit</button>
+        
+                <output id="error-message" class="error-message"></output>
             </form>
         </section>
+        <hr>
     </main>
 
     <footer>
@@ -190,5 +200,7 @@
     <noscript>
         <p>JavaScript is disabled on your browser. Some features may not work properly.</p>
     </noscript>
+    <script src="form.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>

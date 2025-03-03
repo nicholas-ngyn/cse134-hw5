@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML and CSS Only Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            padding: 8px;
+            margin-top: 5px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input:required:invalid,
+        textarea:required:invalid {
+            border-color: red;
+            background-color: #FFEEEE;
+        }
+
+        input:valid,
+        textarea:valid {
+            border-color: green;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .required-indicator {
+            color: red;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Contact Form</h2>
+    <form action="https://httpbin.org/post" method="post">
+        <label for="name">Name: <span class="required-indicator">*</span></label>
+        <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+        
+        <label for="email">Email: <span class="required-indicator">*</span></label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="comments">Comments: <i>(optional)</i></label>
+        <textarea id="comments" name="comments" rows="4" maxlength="300" pattern="[A-Za-z0-9\s.,!?'-]+"></textarea>
+        <small class="error-message">Only letters, numbers, spaces, and punctuation allowed.</small>
+
+        <button type="submit">Submit</button>
+
+        <output id="error-message" class="output"></output>
+        <output id="info-message" class="output"></output>
+    </form>
+</body>
+</html>
