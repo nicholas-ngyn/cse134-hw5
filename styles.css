@@ -595,7 +595,7 @@ input:valid, textarea:valid {
     margin: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     #cards-container {
         grid-template-columns: repeat(1, 1fr);
         column-gap: 50px;
