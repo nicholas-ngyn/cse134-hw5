@@ -506,7 +506,7 @@ textarea {
 .required-indicator {
     color: red;
     font-weight: bold;
-    vertical-align: super; /* Moves it higher */
+    vertical-align: super;
 
 }
 
@@ -564,4 +564,47 @@ input:valid, textarea:valid {
 
 .flash-error {
     animation: flash 0.5s ease-in-out;
+}
+
+#temp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+#temp h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+#cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 100px;
+    row-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    #cards-container {
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 50px;
+        row-gap: 30px;
+        padding: 0 20px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #cards-container {
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 20px;
+        row-gap: 20px;
+    }
 }

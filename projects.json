@@ -1,0 +1,26 @@
+[
+    {
+        "title": "WebClicker++",
+        "image": "images/webclicker++.png",
+        "description": "An application that enhances student participation and helps professors manage class sessions.",
+        "link": "https://webclicker-plusplus.vercel.app/"
+    },
+    {
+        "title": "Low-Price Center",
+        "image": "images/low-price-center.png",
+        "description": "An open-source e-commerce platform for UCSD students to sell and buy goods.",
+        "link": "https://github.com/CSES-Open-Source/LowPriceCenter"
+    },
+    {
+        "title": "LeJournal",
+        "image": "images/lejournal.png",
+        "description": "Your all-in-one web dev journal that empowers developers to manage tasks, log codes, etc...",
+        "link": "https://cse110-sp24-group8.github.io/cse110-sp24-group8/"
+    },
+    {
+        "title": "Alzheimer's Detection (ML)",
+        "image": "images/brain_MRI.png",
+        "description": "A project that aims to develop a multiclass classifier that predicts the presence and stage of Alzheimer's disease using MRI images.",
+        "link": "https://github.com/GeorgioFe/synaptiq"
+    }
+]

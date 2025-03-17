@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         setTimeout(() => {
             input.classList.remove('flash-error');
-        }, 500); // Match the duration of the CSS animation
+        }, 500);
     
         errorMessage.textContent = message;
         errorMessage.style.opacity = 1;
