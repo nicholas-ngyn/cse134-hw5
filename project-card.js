@@ -108,20 +108,40 @@ customElements.define("project-card", ProjectCard);
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("cards-container");
-    const savedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+    const loadLocalButton = document.getElementById("load-local");
+    const loadRemoteButton = document.getElementById("load-remote");
 
-    fetch("projects.json")
-        .then(response => response.json())
-        .then(data => {
-            const projects = [...savedProjects, ...data];
-            projects.forEach(project => {
-                const card = document.createElement("project-card");
-                card.setAttribute("title", project.title);
-                card.setAttribute("image", project.image);
-                card.setAttribute("description", project.description);
-                card.setAttribute("link", project.link);
-                container.appendChild(card);
+    const renderProjects = (projects) => {
+        container.innerHTML = "";
+        projects.forEach(project => {
+            const card = document.createElement("project-card");
+            card.setAttribute("title", project.title);
+            card.setAttribute("image", project.image);
+            card.setAttribute("description", project.description);
+            card.setAttribute("link", project.link);
+            container.appendChild(card);
+        });
+    };
+
+    loadLocalButton.addEventListener("click", () => {
+        const savedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+        if (savedProjects.length > 0) {
+            renderProjects(savedProjects);
+        } else {
+            alert("No local data found!");
+        }
+    });
+
+    loadRemoteButton.addEventListener("click", () => {
+        fetch("https://my-json-server.typicode.com/nicholas-ngyn/cse134-hw5/projects")
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem("projects", JSON.stringify(data));
+                renderProjects(data);
+            })
+            .catch(error => {
+                console.error("Error fetching remote data:", error);
+                alert("Failed to load remote data!");
             });
-        })
-        .catch(error => console.error("Error loading projects:", error));
+    });
 });

@@ -23,6 +23,11 @@
       "image": "images/brain_MRI.png",
       "description": "A project that aims to develop a multiclass classifier that predicts the presence and stage of Alzheimer's disease using MRI images.",
       "link": "https://github.com/GeorgioFe/synaptiq"
-    }
+    },
+    {
+      "title": "Portfolio Website",
+      "image": "images/portfolio.png",
+      "description": "My personal portfolio website showcasing my projects and skills.",
+      "link": "
   ]
 }
